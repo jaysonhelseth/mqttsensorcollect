@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Status</title>
+</head>
+<body>
+    <h1>Welcome</h1>
+    <div id="garageData"></div>
+    <script>
+        let garageData = document.getElementById("garageData");
+
+        function getData() {
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    garageData.innerHTML = this.responseText;
+                }
+            };
+
+            xhttp.open("GET", "data", true);
+            xhttp.send();
+        }
+
+        setInterval(getData, 1000);
+    </script>
+</body>
+</html>
